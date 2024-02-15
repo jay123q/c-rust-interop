@@ -35,9 +35,9 @@ pub extern "C" fn rs_func(my_num: &mut i32) {
 pub extern "C" fn rust_modify_array(slice: &[i32]) 
 {
     println!("[rust] calling a int ");
-    println!("First element of the slice: {}", slice[0]);
-    println!("The slice has {} elements", slice.len());
-    unsafe { access_array( slice[0].try_into().unwrap()); }
+    println!("RUST First element of the slice: {}", slice[0]);
+    let box1: c_int = unsafe { access_array( slice[0] as c_int ) };
+    println!("C   First element of the slice: {}", box1);
 }
 
 
